@@ -28,7 +28,7 @@ Banki alkalmazást szimuláló program.
 ### BANKSZÁMLÁK:
 * több bankszámlával rendelkezhet, ezek listázása (1-sok)
 * egyenlegek megtekintése
-* tranzakciók listázása
+* tranzakciók listázása (számlatörténet)
 * tranzakció indítása
 * bankszámlához tartozik: név, létrehozás dátuma(automatikus), bankszámlaszám, bankkártyák(nem kötelező), egyenleg
 * társtulajdonosok listázása (sok-sok)
@@ -46,3 +46,10 @@ Banki alkalmazást szimuláló program.
 ### PROFIL:
 * regisztráció kezdeményezése
 * bejelentkezés
+
+# Nem funkcionális követelmények
+* biztonságos, jelszavas azonosítás
+* gyors, egyszerű
+
+## Szakterületi fogalomjegyzék
+* tranzakció: Két bankszámla közötti összegátvitel.
