@@ -1,5 +1,6 @@
 package hu.elte.bankApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,6 +10,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.fasterxml.jackson.annotation.JsonProperty.Access.WRITE_ONLY;
 
@@ -38,6 +41,15 @@ public class Account {
     @Column(nullable = false)
     //  @JsonProperty(access = WRITE_ONLY)
     private int balance;
+
+    @OneToMany(mappedBy = "account")
+   private List<Card> cards;
+
+    @ManyToMany(mappedBy = "accounts")
+   private List<PersonalData> owners;
+
+    @OneToMany()
+    private List<Transaction> transactions;
 
     public int getId() {
         return id;

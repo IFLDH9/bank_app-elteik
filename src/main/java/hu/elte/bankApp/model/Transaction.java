@@ -45,6 +45,12 @@ public class Transaction {
     // @JsonProperty(access = WRITE_ONLY)
     private LocalDate dateOfTransaction;
 
+    @ManyToOne()
+    private Account sourceAccount;
+
+    @ManyToOne()
+    private Account targetAccount;
+
     public int getId() {
         return id;
     }

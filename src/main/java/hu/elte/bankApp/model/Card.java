@@ -1,5 +1,6 @@
 package hu.elte.bankApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,10 +30,15 @@ public class Card {
     private LocalDate expirationDate;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private CardType cardType;
 
     @Column(nullable = false)
     private String cardNumber;
+
+    @ManyToOne()
+    @JsonIgnore
+   private Account account;
 
     public int getId() {
         return id;
