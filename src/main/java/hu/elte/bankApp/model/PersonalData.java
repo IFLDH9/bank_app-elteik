@@ -38,7 +38,7 @@ public class PersonalData {
     private String idCardNumber;
 
     @JsonIgnore
-    @ManyToMany()
+    @ManyToMany(mappedBy = "owners")
    private List<Account> accounts;
 
     public int getId() {

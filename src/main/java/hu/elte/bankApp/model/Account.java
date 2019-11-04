@@ -45,7 +45,7 @@ public class Account {
     @OneToMany(mappedBy = "account")
    private List<Card> cards;
 
-    @ManyToMany(mappedBy = "accounts")
+    @ManyToMany()
    private List<PersonalData> owners;
 
     @OneToMany()
