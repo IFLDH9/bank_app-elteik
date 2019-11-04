@@ -1,5 +1,6 @@
 package hu.elte.bankApp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -45,9 +46,11 @@ public class Transaction {
     // @JsonProperty(access = WRITE_ONLY)
     private LocalDate dateOfTransaction;
 
+    @JsonIgnore
     @ManyToOne()
     private Account sourceAccount;
 
+    @JsonIgnore
     @ManyToOne()
     private Account targetAccount;
 

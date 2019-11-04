@@ -48,8 +48,11 @@ public class Account {
     @ManyToMany()
    private List<PersonalData> owners;
 
-    @OneToMany()
-    private List<Transaction> transactions;
+    @OneToMany(mappedBy = "targetAccount")
+    private List<Transaction> incomingTransactions;
+
+    @OneToMany(mappedBy = "sourceAccount")
+    private List<Transaction> outgoingTransactions;
 
     public int getId() {
         return id;
