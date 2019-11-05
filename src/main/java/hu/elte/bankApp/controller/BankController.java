@@ -1,6 +1,5 @@
 package hu.elte.bankApp.controller;
 
-
 import hu.elte.bankApp.model.Account;
 import hu.elte.bankApp.repository.AccountRepository;
 import hu.elte.bankApp.repository.CardRepository;
@@ -25,12 +24,25 @@ public class BankController {
     @Autowired
     private TransactionRepository transactionRepository;
 
-    @GetMapping("")
+    @GetMapping("accounts/get/{id}")
+    public ResponseEntity<Account> getAccount(
+            @PathVariable Integer id
+    ) {
+        Optional<Account> oAccount = accountRepository.findById(id);
+        if (oAccount.isPresent()) {
+            Account account = oAccount.get();
+            return ResponseEntity.ok(account);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @GetMapping("/accounts/getAll")
     public Iterable<Account> getAccounts() {
         return accountRepository.findAll();
     }
 
-    @PostMapping("")
+    @PostMapping("/accounts/create")
     public ResponseEntity<Account> createAccount(
             @RequestBody Account account
     ) {
@@ -38,7 +50,7 @@ public class BankController {
         return ResponseEntity.ok(savedAccount);
     }
 
-    @PatchMapping("/{id}")
+    @PatchMapping("accounts/modify/{id}")
     public ResponseEntity<Account> modifyAccount(
             @PathVariable Integer id,
             @RequestBody Account account
@@ -56,7 +68,7 @@ public class BankController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/accounts/delete/{id}")
     public ResponseEntity deleteAccount(
             @PathVariable Integer id
     ) {
