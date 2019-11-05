@@ -26,10 +26,6 @@ public class Account {
     private int id;
 
     @Column(nullable = false)
-    // @JsonProperty(access = WRITE_ONLY)
-    private String name;
-
-    @Column(nullable = false)
     @CreationTimestamp
     // @JsonProperty(access = WRITE_ONLY)
     private LocalDate createdAt;
@@ -46,6 +42,7 @@ public class Account {
    private List<Card> cards;
 
     @ManyToMany()
+    @JoinTable
    private List<PersonalData> owners;
 
     @OneToMany(mappedBy = "targetAccount")
@@ -60,14 +57,6 @@ public class Account {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public LocalDate getCreatedAt() {
