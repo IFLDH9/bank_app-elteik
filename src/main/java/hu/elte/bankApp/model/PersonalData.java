@@ -26,20 +26,33 @@ public class PersonalData {
     private int id;
 
     @Column(nullable = false)
-   // @JsonProperty(access = WRITE_ONLY)
+    @JsonProperty(access = WRITE_ONLY)
     private String name;
 
     @Column(nullable = false)
-  //  @JsonProperty(access = WRITE_ONLY)
+    @JsonProperty(access = WRITE_ONLY)
+    private String password;
+
+    @Column(nullable = false)
+    //  @JsonProperty(access = WRITE_ONLY)
     private LocalDate dateOfBirth;
 
     @Column(nullable = false)
- //   @JsonProperty(access = WRITE_ONLY)
+    //   @JsonProperty(access = WRITE_ONLY)
     private String idCardNumber;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "owners")
-   private List<Account> accounts;
+    private List<Account> accounts;
+
+    public enum Role {
+        ROLE_GUEST, ROLE_USER, ROLE_ADMIN
+    }
+
 
     public int getId() {
         return id;
@@ -73,6 +86,22 @@ public class PersonalData {
         this.idCardNumber = idCardNumber;
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public List<Account> getAccounts() {
         return accounts;
     }
@@ -81,7 +110,7 @@ public class PersonalData {
         this.accounts = accounts;
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         accounts.add(account);
     }
 }

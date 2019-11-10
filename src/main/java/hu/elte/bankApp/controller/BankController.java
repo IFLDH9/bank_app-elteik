@@ -5,11 +5,13 @@ import hu.elte.bankApp.repository.AccountRepository;
 import hu.elte.bankApp.repository.CardRepository;
 import hu.elte.bankApp.repository.PersonalDataRepository;
 import hu.elte.bankApp.repository.TransactionRepository;
+import hu.elte.bankApp.security.AuthenticatedUser;
 import hu.elte.bankApp.wrapper.IDsWrapper;
 import hu.elte.bankApp.wrapper.TransactionWrapper;
 import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
@@ -20,6 +22,8 @@ import java.util.Optional;
 public class BankController {
 
     @Autowired
+    private AuthenticatedUser authenticatedUser;
+    @Autowired
     private AccountRepository accountRepository;
     @Autowired
     private CardRepository cardRepository;
@@ -28,6 +32,7 @@ public class BankController {
     @Autowired
     private TransactionRepository transactionRepository;
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/accounts/get/byAccountNumber/{accountNumber}")
     public ResponseEntity<Account> getAccountByAccountNumber(@PathVariable String accountNumber) {
         Optional<Account> oAccount = accountRepository.findAccountByAccountNumber(accountNumber);
@@ -39,6 +44,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("accounts/get/byID/{id}")
     public ResponseEntity<Account> getAccount(
             @PathVariable Integer id
@@ -52,6 +58,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("accounts/get/byOwner/{ownerName}")
     public Iterable<Account> getAccountByOwner(
             @PathVariable String ownerName
@@ -66,6 +73,7 @@ public class BankController {
         return accountRepository.findAccountsByOwners(person);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("accounts/get/byDate/{date}")
     public Iterable<Account> getAccountByDate(
             @PathVariable LocalDate date
@@ -73,11 +81,13 @@ public class BankController {
         return accountRepository.findAccountsByCreatedAt(date);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/accounts/getAll")
     public Iterable<Account> getAccounts() {
         return accountRepository.findAll();
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/accounts/create")
     public ResponseEntity<Account> createAccount(
             @RequestBody Account account
@@ -86,6 +96,7 @@ public class BankController {
         return ResponseEntity.ok(savedAccount);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PatchMapping("accounts/modify/{id}")
     public ResponseEntity<Account> modifyAccount(
             @PathVariable Integer id,
@@ -103,6 +114,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("/accounts/delete/{id}")
     public ResponseEntity deleteAccount(
             @PathVariable Integer id
@@ -115,6 +127,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PatchMapping("/accounts/{id}/addPersons")
     public ResponseEntity<Account> addPersonToAccount(
             @PathVariable Integer id,
@@ -138,11 +151,13 @@ public class BankController {
         return ResponseEntity.ok(savedAccount);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/persons/getAll")
     public Iterable<PersonalData> getPersons() {
         return personalDataRepository.findAll();
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("persons/get/byID/{id}")
     public ResponseEntity<PersonalData> getPersonalAccount(
             @PathVariable Integer id
@@ -156,6 +171,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("persons/get/byName/{name}")
     public ResponseEntity<PersonalData> getPersonalAccountByName(
             @PathVariable String name
@@ -169,6 +185,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("persons/get/byIDNumber/{number}")
     public ResponseEntity<PersonalData> getPersonalAccountByIDCardNumber(
             @PathVariable String number
@@ -182,6 +199,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/persons/create")
     public ResponseEntity<PersonalData> createAccount(
             @RequestBody PersonalData person
@@ -190,6 +208,7 @@ public class BankController {
         return ResponseEntity.ok(savedPersonalAccount);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PatchMapping("/persons/{id}/addAccounts")
     public ResponseEntity<PersonalData> addAccountsToAPerson(
             @PathVariable Integer id,
@@ -213,6 +232,7 @@ public class BankController {
         return ResponseEntity.ok(savedPersonalAccount);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/cards/get/byCardNumber/{cardNumber}")
     public ResponseEntity<Card> getCardByCardNumber(@PathVariable String cardNumber) {
         Optional<Card> oCard = cardRepository.getCardByCardNumber(cardNumber);
@@ -224,6 +244,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("cards/get/byID/{id}")
     public ResponseEntity<Card> getCardByID(
             @PathVariable Integer id
@@ -237,6 +258,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("cards/get/byOwnerName/{ownerName}")
     public Iterable<Card> getCardByOwner(
             @PathVariable String ownerName
@@ -244,6 +266,7 @@ public class BankController {
         return cardRepository.getCardsByOwnerName(ownerName);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("cards/get/byCardType/{cardType}")
     public Iterable<Card> getCardsByCardType(
             @PathVariable CardType cardType
@@ -251,11 +274,13 @@ public class BankController {
         return cardRepository.getCardsByCardType(cardType);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/cards/getAll")
     public Iterable<Card> getCards() {
         return cardRepository.findAll();
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/cards/create")
     public ResponseEntity<Card> createCard(
             @RequestBody Card card
@@ -264,6 +289,7 @@ public class BankController {
         return ResponseEntity.ok(savedCard);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PatchMapping("cards/modify/{id}")
     public ResponseEntity<Card> modifyAccount(
             @PathVariable Integer id,
@@ -283,6 +309,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @DeleteMapping("/cards/delete/{id}")
     public ResponseEntity deleteCard(
             @PathVariable Integer id
@@ -295,6 +322,7 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PatchMapping("/cards/{id}/addAccount")
     public ResponseEntity<Card> addAccountToCard(
             @PathVariable Integer id,
@@ -324,26 +352,31 @@ public class BankController {
         return ResponseEntity.ok(savedCard);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/transactions/get/bySourceAccountNumber/{sourceAccountNumber}")
     public Iterable<Transaction> getTransactionBySourceAccountNumber(@PathVariable String sourceAccountNumber) {
         return transactionRepository.getTransactionsBySourceAccountNumber(sourceAccountNumber);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/transactions/get/byTargetAccountNumber/{targetAccountNumber}")
     public Iterable<Transaction> getTransactionByTargetAccountNumber(@PathVariable String targetAccountNumber) {
         return transactionRepository.getTransactionsByTargetAccountNumber(targetAccountNumber);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/transactions/get/byAccountName/{accountNumber}")
     public Iterable<Transaction> getTransactionByAccountNumber(@PathVariable String accountNumber) {
         return transactionRepository.getTransactionsBySourceAccountNumberAndTargetAccountNumber(accountNumber, accountNumber);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/transactions/get/byDate/{date}")
     public Iterable<Transaction> getTransactionByDate(@PathVariable LocalDate date) {
         return transactionRepository.getTransactionsByDateOfTransaction(date);
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("transactions/get/byID/{id}")
     public ResponseEntity<Transaction> getTransactionById(
             @PathVariable Integer id
@@ -357,11 +390,13 @@ public class BankController {
         }
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("/transactions/getAll")
     public Iterable<Transaction> getTransactions() {
         return transactionRepository.findAll();
     }
 
+    @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/transactions/create")
     public ResponseEntity<Transaction> createTransaction(
             @RequestBody TransactionWrapper transactionWrapper
