@@ -30,13 +30,7 @@ public class Transaction {
     private String sourceAccountNumber;
 
     @Column(nullable = false)
-    private String sourceAccountOwnerName;
-
-    @Column(nullable = false)
     private String targetAccountNumber;
-
-    @Column(nullable = false)
-    private String targetAccountOwnerName;
 
     @Column(nullable = false)
     private int value;
@@ -70,28 +64,12 @@ public class Transaction {
         this.sourceAccountNumber = sourceAccountNumber;
     }
 
-    public String getSourceAccountOwnerName() {
-        return sourceAccountOwnerName;
-    }
-
-    public void setSourceAccountOwnerName(String sourceAccountOwnerName) {
-        this.sourceAccountOwnerName = sourceAccountOwnerName;
-    }
-
     public String getTargetAccountNumber() {
         return targetAccountNumber;
     }
 
     public void setTargetAccountNumber(String targetAccountNumber) {
         this.targetAccountNumber = targetAccountNumber;
-    }
-
-    public String getTargetAccountOwnerName() {
-        return targetAccountOwnerName;
-    }
-
-    public void setTargetAccountOwnerName(String targetAccountOwnerName) {
-        this.targetAccountOwnerName = targetAccountOwnerName;
     }
 
     public int getValue() {
@@ -108,5 +86,21 @@ public class Transaction {
 
     public void setDateOfTransaction(LocalDate dateOfTransaction) {
         this.dateOfTransaction = dateOfTransaction;
+    }
+
+    public Account getSourceAccount() {
+        return sourceAccount;
+    }
+
+    public void setSourceAccount(Account sourceAccount) {
+        this.sourceAccount = sourceAccount;
+    }
+
+    public Account getTargetAccount() {
+        return targetAccount;
+    }
+
+    public void setTargetAccount(Account targetAccount) {
+        this.targetAccount = targetAccount;
     }
 }

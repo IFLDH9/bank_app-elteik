@@ -79,4 +79,12 @@ public class Card {
     public void setCardNumber(String cardNumber) {
         this.cardNumber = cardNumber;
     }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 }

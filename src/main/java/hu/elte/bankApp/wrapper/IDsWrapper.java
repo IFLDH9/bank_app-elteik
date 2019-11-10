@@ -2,7 +2,7 @@ package hu.elte.bankApp.wrapper;
 
 import java.util.List;
 
-public class AccountIDsWrapper {
+public class IDsWrapper {
     List<Integer> ids;
 
     public List<Integer> getIds() {

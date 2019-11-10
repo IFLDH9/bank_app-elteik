@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface PersonalDataRepository extends CrudRepository<PersonalData, Integer> {
-    Iterable<PersonalData> getAllByName(String name);
+    Optional<PersonalData> getPersonalDataByName(String name);
     Optional<PersonalData> getPersonalDataByIdCardNumber(String idCardNumber);
 }

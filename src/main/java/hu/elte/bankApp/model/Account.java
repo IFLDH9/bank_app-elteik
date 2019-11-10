@@ -39,11 +39,11 @@ public class Account {
     private int balance;
 
     @OneToMany(mappedBy = "account")
-   private List<Card> cards;
+    private List<Card> cards;
 
     @ManyToMany()
     @JoinTable
-   private List<PersonalData> owners;
+    private List<PersonalData> owners;
 
     @OneToMany(mappedBy = "targetAccount")
     private List<Transaction> incomingTransactions;
@@ -81,5 +81,25 @@ public class Account {
 
     public void setBalance(int balance) {
         this.balance = balance;
+    }
+
+    public void addPerson(PersonalData person) {
+        owners.add(person);
+    }
+
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+
+    public void changeBalance(int change) {
+        balance += change;
+    }
+
+    public void addOutgoingTransaction(Transaction transaction) {
+        outgoingTransactions.add(transaction);
+    }
+
+    public void addIncomingTransaction(Transaction transaction) {
+        incomingTransactions.add(transaction);
     }
 }
