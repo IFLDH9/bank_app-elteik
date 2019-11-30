@@ -76,9 +76,10 @@ public class BankController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @GetMapping("accounts/get/byDate/{date}")
     public Iterable<Account> getAccountByDate(
-            @PathVariable LocalDate date
+            @PathVariable String date
     ) {
-        return accountRepository.findAccountsByCreatedAt(date);
+        LocalDate localDate = LocalDate.parse(date);
+        return accountRepository.findAccountsByCreatedAt(localDate);
     }
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
