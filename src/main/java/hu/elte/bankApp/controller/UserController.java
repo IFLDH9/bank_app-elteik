@@ -2,16 +2,21 @@ package hu.elte.bankApp.controller;
 
 import hu.elte.bankApp.model.PersonalData;
 import hu.elte.bankApp.repository.PersonalDataRepository;
+import hu.elte.bankApp.security.AuthenticatedUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+    
+    @Autowired
+    private AuthenticatedUser authenticatedUser;
 
     @Autowired
     private PersonalDataRepository userRepository;
@@ -30,9 +35,9 @@ public class UserController {
         return ResponseEntity.ok(userRepository.save(user));
     }
 
-    @GetMapping("login")
-    public ResponseEntity login() {
-        return ResponseEntity.ok().build();
+    @GetMapping("/login")
+    public ResponseEntity<PersonalData> login() {
+        return ResponseEntity.ok(authenticatedUser.getUser());
     }
 
 }

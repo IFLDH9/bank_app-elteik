@@ -8,7 +8,7 @@ import hu.elte.bankApp.repository.TransactionRepository;
 import hu.elte.bankApp.security.AuthenticatedUser;
 import hu.elte.bankApp.wrapper.IDsWrapper;
 import hu.elte.bankApp.wrapper.TransactionWrapper;
-import jdk.vm.ci.meta.Local;
+//import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
