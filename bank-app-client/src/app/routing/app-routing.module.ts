@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { IssueListComponent } from "../issue-list/issue-list.component";
-import { IssueFormComponent } from '../issue-form/issue-form.component';
+//import { IssueListComponent } from "../issue-list/issue-list.component";
+import { AccountFormComponent } from '../account-form/account-form.component';
 import { LandingComponent } from '../landing/landing.component';
-import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
-import { IssueNewComponent } from '../issue-new/issue-new.component';
-import { IssueEditComponent } from '../issue-edit/issue-edit.component';
+//import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
+import { AccountNewComponent } from '../account-new/account-new.component';
+//import { IssueEditComponent } from '../issue-edit/issue-edit.component';
 import { LoginComponent } from '../login/login.component';
-import { UserRole } from 'src/domain/user-role';
+import { Role } from 'src/domain/role';
 import { RoleGuard } from '../role.guard';
-// import { IssueDetailComponent } from '../issue-detail/issue-detail.component';
+
 
 const routes: Routes = [
   {
@@ -18,19 +18,19 @@ const routes: Routes = [
     component: LandingComponent,
     pathMatch: 'full'
   },
+  // {
+    // path: 'issues',
+    // component: IssueListComponent,
+    // data: {
+      // roles: [UserRole.Admin, UserRole.User],
+    // },
+    // canActivate: [RoleGuard],
+  // },
   {
-    path: 'issues',
-    component: IssueListComponent,
+    path: 'bank/account/create',
+    component: AccountNewComponent,
     data: {
-      roles: [UserRole.Admin, UserRole.User],
-    },
-    canActivate: [RoleGuard],
-  },
-  {
-    path: 'issues/new',
-    component: IssueNewComponent,
-    data: {
-      roles: [UserRole.User],
+      roles: [Role.User, Role.Admin],
     },
     canActivate: [RoleGuard],
   },

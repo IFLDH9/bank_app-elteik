@@ -1,3 +1,5 @@
+import { MatToolbarModule, MatIconModule, MatButtonModule } from '@angular/material';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -22,6 +24,8 @@ import { IssueNewComponent } from './issue-new/issue-new.component';
 import { IssueEditComponent } from './issue-edit/issue-edit.component';
 import { LoginComponent } from './login/login.component';
 import { RoleDirective } from './role.directive';
+import { AccountNewComponent } from './account-new/account-new.component';
+import { AccountFormComponent } from './account-form/account-form.component';
 
 @NgModule({
   declarations: [
@@ -35,9 +39,15 @@ import { RoleDirective } from './role.directive';
     IssueEditComponent,
     LoginComponent,
     RoleDirective,
+    AccountNewComponent,
+    AccountFormComponent,
   ],
   imports: [
-    BrowserModule,
+    MatToolbarModule,
+	MatIconModule,
+	MatButtonModule,
+	
+	BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,

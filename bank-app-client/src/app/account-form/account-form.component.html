@@ -1,0 +1,60 @@
+<form #form="ngForm" (ngSubmit)="submitAccount(form.form)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="account number"
+        [(ngModel)]="account.accountNumber"
+        name="account number"
+        required
+        #accountNumber="ngModel"
+        [disabled]="mode === 'edit'"
+      />
+      <mat-error
+        *ngIf="
+          accountNumber.invalid &&
+          (accountNumber.touched || accountNumber.dirty) &&
+          accountNumber.errors['required']
+        "
+      >
+        
+	  </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="balance"
+        value=""
+        [(ngModel)]="issue.balance"
+        name="balance"
+        required
+        #balance="ngModel"
+        pattern="PC-\d+"
+      />
+      <mat-error
+        *ngIf="
+          balance.invalid &&
+          (balance.touched || balance.dirty) &&
+          balance.errors['required']
+        "
+      >
+        
+      </mat-error>
+      <mat-error
+        *ngIf="
+          balance.invalid &&
+          (balance.touched || balance.dirty) &&
+          balance.errors['pattern']
+        "
+      >
+        
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

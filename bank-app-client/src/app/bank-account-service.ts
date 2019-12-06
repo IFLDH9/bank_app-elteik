@@ -16,7 +16,7 @@ export class BankAccountService {
 	){}
 	
 	async getAccounts(){
-		const accounts = await (this.http.get('/bank/accounts/getAll'))
+		const accounts = await (this.http.get('bank/accounts/getAll'))
 		.toPromise() as Promise<any[]>);
 		this-filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
 	}
