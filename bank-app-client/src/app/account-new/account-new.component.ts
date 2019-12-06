@@ -17,13 +17,14 @@ export class AccountNewComponent implements OnInit {
 	
 	ngOnInit() {
 		this.account = {
-				createdAt : '';
-				accountNumber : null;
-				balance : null;
-				cards : null;
-				owners : null;
-				incomingTransactions : null;
-				outgoingTransactions : null;
+				id : null,
+				createdAt : '',
+				accountNumber : null,
+				balance : null,
+				cards : null,
+				owners : null,
+				incomingTransactions : null,
+				outgoingTransactions : null,
 		};
   }
   

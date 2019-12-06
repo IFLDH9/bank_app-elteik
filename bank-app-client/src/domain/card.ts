@@ -1,4 +1,4 @@
-import {CardType} from './cardType';
+import {CardType} from './card-type';
 import {Account} from './account';
 
 export interface Card {

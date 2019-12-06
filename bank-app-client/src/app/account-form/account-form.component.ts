@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Account } from 'src/domain/account';
 import { FormGroup } from '@angular/forms';
 import { BankAccountService } from '../bank-account-service';
@@ -23,7 +23,7 @@ export class AccountFormComponent implements OnInit {
 		if(!form.valid){
 			return;
 		}
-		this.accountSubmit.emit()form.getRawValue() as Account();
+		this.accountSubmit.emit(form.getRawValue() as Account);
 	}
 
 

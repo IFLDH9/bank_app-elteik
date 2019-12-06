@@ -16,9 +16,9 @@ export class BankAccountService {
 	){}
 	
 	async getAccounts(){
-		const accounts = await (this.http.get('bank/accounts/getAll'))
+		const accounts = await (this.http.get('bank/accounts/getAll')
 		.toPromise() as Promise<any[]>);
-		this-filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
+		this.filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
 	}
 
 	async getAccountById(accountId: number): Promise<Account>{
@@ -30,13 +30,13 @@ export class BankAccountService {
 	async getAccountByOwnerName(ownerName: string){
 		const accounts = await (this.http.get(`bank/accounts/get/byOwner/${ownerName}`)
 		.toPromise() as Promise<any[]>);		
-		this-filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
+		this.filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
 	}
 	
 	async getAccountByDate(date: string){
 		const accounts = await (this.http.get(`bank/accounts/get/byDate/${date}`)
 		.toPromise() as Promise<any[]>);	
-		this-filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
+		this.filteredAccounts = this.accounts = accounts.map(this.createAccountModel);
 	}
 
 	async createAccount (account: Account): Promise<any>{
@@ -48,12 +48,21 @@ export class BankAccountService {
 	}
 
 	async deleteAccount (account: Account): Promise<any>{
-	await this.http.delete(`bank/account/delete/${account.id}`, account).toPromise();
+	await this.http.delete(`bank/account/delete/${account.id}`).toPromise();
 	}
 	
 	async addPersonsToAccount (accountId: number, personIds : number[]): Promise<any>{
 	await this.http.patch(`bank/account/${accountId}/addPersons`, personIds).toPromise();
 	}
+
+	private createAccountModel(account: any): Account{
+		return {
+			...account,
+			createdAt: new Date(account.createdAt)
+		} as Account;
+	}
+
+
 
 	/*	
 	filterChange(filterValue: string) {

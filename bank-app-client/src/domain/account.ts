@@ -1,6 +1,6 @@
 import {Card} from './card';
 import {Transaction} from './transaction';
-import {PersonalData} from './personalData';
+import {PersonalData} from './personal-data';
 
 export interface Account {
 	id: number;

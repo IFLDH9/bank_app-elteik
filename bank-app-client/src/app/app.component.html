@@ -3,27 +3,27 @@
         mat-button
         routerLink="/"
     >
-        <mat-icon>home</mat-icon>
+       <mat-icon>home</mat-icon>
         Issue tracker
     </button>
-    <ng-container
-        *ngIf="authService.isLoggedIn"
-    >
-        <button
-            mat-button
-            routerLink="/issues"
-        >
-            My issues
-        </button>
-        <button
-            mat-button
-            routerLink="/issues/new"
-            *appRole="[UserRole.User]"
-        >
-            New issues
-        </button>
-        <button mat-button (click)="authService.logout()">Logout</button>
-    </ng-container>
+    <!-- <ng-container -->
+        <!-- *ngIf="authService.isLoggedIn" -->
+    <!-- > -->
+        <!-- <button -->
+            <!-- mat-button -->
+            <!-- routerLink="/issues" -->
+        <!-- > -->
+            <!-- My issues -->
+        <!-- </button> -->
+        <!-- <button -->
+            <!-- mat-button -->
+            <!-- routerLink="/issues/new" -->
+            <!-- *appRole="[Role.User]" -->
+        <!-- > -->
+            <!-- New issues -->
+        <!-- </button> -->
+        <!-- <button mat-button (click)="authService.logout()">Logout</button> -->
+    <!-- </ng-container> -->
     <ng-container
         *ngIf="!authService.isLoggedIn"
     >

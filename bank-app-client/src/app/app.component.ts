@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from './auth.service';
-import { UserRole } from 'src/domain/user-role';
+import { AuthService } from './auth-service';
+import { Role } from 'src/domain/role';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,15 @@ import { UserRole } from 'src/domain/user-role';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	UserRole = UserRole;
-	currentPage: 'list' |'landing'|'form'='landing';
+	Role = Role;
+	currentPage: 'list' | 'landing' | 'form' = 'landing';
 	
 	constructor(
 		public authService: AuthService
 	){}
 	
 	changePage(newPage: string){
-		this.currentPage = newPage
+		this.currentPage = newPage as any;
 	}
 	
   title = 'bank';

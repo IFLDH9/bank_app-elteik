@@ -9,7 +9,7 @@ import { AccountNewComponent } from '../account-new/account-new.component';
 //import { IssueEditComponent } from '../issue-edit/issue-edit.component';
 import { LoginComponent } from '../login/login.component';
 import { Role } from 'src/domain/role';
-import { RoleGuard } from '../role.guard';
+import { RoleGuard } from '../role-guard';
 
 
 const routes: Routes = [
@@ -34,27 +34,27 @@ const routes: Routes = [
     },
     canActivate: [RoleGuard],
   },
-  {
-    path: 'issues/:id',
-    component: IssueDetailComponent,
-    data: {
-      roles: [UserRole.Admin, UserRole.User],
-    },
-    canActivate: [RoleGuard],
-  },
-  {
-    path: 'issues/:id/edit',
-    component: IssueEditComponent,
-    data: {
-      roles: [UserRole.Admin],
-    },
-    canActivate: [RoleGuard],
-  },
+  // {
+    // path: 'issues/:id',
+    // component: IssueDetailComponent,
+    // data: {
+      // roles: [UserRole.Admin, UserRole.User],
+    // },
+    // canActivate: [RoleGuard],
+  // },
+  // {
+    // path: 'issues/:id/edit',
+    // component: IssueEditComponent,
+    // data: {
+      // roles: [UserRole.Admin],
+    // },
+    // canActivate: [RoleGuard],
+  // },
   {
     path: 'login',
     component: LoginComponent,
     data: {
-      roles: [UserRole.Guest],
+      roles: [Role.Guest],
     },
     canActivate: [RoleGuard],
   },
@@ -70,7 +70,6 @@ const routes: Routes = [
   declarations: []
 })
 export class RoutingModule { }
-
 
 
 /*

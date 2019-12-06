@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from 'src/domain/user';
-import { UserRole } from 'src/domain/user-role';
+import { PersonalData } from 'src/domain/personal-data';
+import { Role } from 'src/domain/role';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -8,17 +8,17 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-
+	private user: PersonalData;
 	get isLoggedIn(): boolean {
-    return this.user.role !== UserRole.Guest;
+    return this.user.role !== Role.Guest;
 	}
 	get token() {
-		return btoa(${this.user.username}:${this.user.password});
+		return btoa(`${this.user.name}:${this.user.password}`);
 	}
-	get role(): UserRole {
+	get role(): Role {
 		return this.user.role;
 	}
-	private user: User;
+
 
 	constructor(
 		private router: Router,
@@ -27,7 +27,7 @@ export class AuthService {
 		this.logout(false);
 	}
 
-	hasRole(roles: UserRole[]): boolean {
+	hasRole(roles: Role[]): boolean {
 		return roles.some(
 		role => role === this.role);
 	}
@@ -35,15 +35,22 @@ export class AuthService {
 	async login(username: string, password: string) {
 		const oldUser = this.user;
 		this.user = {
-			role: UserRole.Guest,
+			role: Role.Guest,
 			name: username,
 			password: password,
+			dateOfBirth: null,
+			idCardNumber: null,
+			accounts: null
 		};
 		try {
-			const user = await (this.http.get('users/login').toPromise() as Promise<User>);
+			const user = await (this.http.get('users/login').toPromise() as Promise<PersonalData>);
 			this.user.name = user.name;
 			this.user.role = user.role;
+			this.user.dateOfBirth = user.dateOfBirth;
+			this.user.idCardNumber = user.idCardNumber;
+			this.user.accounts = user.accounts;
 			this.router.navigate(['/']);
+			
 		} catch (e) {
 			this.user = oldUser;
 		}
@@ -52,9 +59,11 @@ export class AuthService {
 	logout(shouldNavigateToRoot: boolean = true) {
 		this.user = {
 		name: 'Guest',
-		username: null,
 		password: null,
-		role: UserRole.Guest,
+		dateOfBirth: null,
+			idCardNumber: null,
+			accounts: null,
+		role: Role.Guest,
 		};
 		if (shouldNavigateToRoot) {
 			this.router.navigate(['/']);

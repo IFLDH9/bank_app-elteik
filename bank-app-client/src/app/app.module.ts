@@ -5,38 +5,36 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
+//import {MatToolbarModule} from '@angular/material/toolbar';
+//import {MatIconModule} from '@angular/material/icon';
+//import {MatButtonModule} from '@angular/material/button';
 import { LandingComponent } from './landing/landing.component';
-import { IssueListComponent } from './issue-list/issue-list.component';
-import { IssueFormComponent } from './issue-form/issue-form.component';
+//import { IssueListComponent } from './issue-list/issue-list.component';
+import { AccountFormComponent } from './account-form/account-form.component';
 import {MatInputModule} from '@angular/material/input';
-import { RoutingModule } from './routing/routing.module';
+import { RoutingModule } from './routing/app-routing.module';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import { StatusFilterComponent } from './status-filter/status-filter.component';
+//import { StatusFilterComponent } from './status-filter/status-filter.component';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { IssueDetailComponent } from './issue-detail/issue-detail.component';
+//import { IssueDetailComponent } from './issue-detail/issue-detail.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header-interceptor';
-import { IssueNewComponent } from './issue-new/issue-new.component';
-import { IssueEditComponent } from './issue-edit/issue-edit.component';
-import { LoginComponent } from './login/login.component';
-import { RoleDirective } from './role.directive';
 import { AccountNewComponent } from './account-new/account-new.component';
-import { AccountFormComponent } from './account-form/account-form.component';
+//import { IssueEditComponent } from './issue-edit/issue-edit.component';
+import { LoginComponent } from './login/login.component';
+import { RoleDirective } from './role-directive';
+//import { AccountNewComponent } from './account-new/account-new.component';
+//import { AccountFormComponent } from './account-form/account-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LandingComponent,
-    IssueListComponent,
-    IssueFormComponent,
-    StatusFilterComponent,
-    IssueDetailComponent,
-    IssueNewComponent,
-    IssueEditComponent,
+//  IssueListComponent,
+//  StatusFilterComponent,
+//  IssueDetailComponent,
+//  IssueEditComponent,
     LoginComponent,
     RoleDirective,
     AccountNewComponent,

@@ -1,13 +1,13 @@
 import { Directive, Input, ElementRef, OnInit } from '@angular/core';
-import { UserRole } from 'src/domain/user-role';
-import { AuthService } from './auth.service';
+import { Role } from 'src/domain/role';
+import { AuthService } from './auth-service';
 
 @Directive({
   selector: '[appRole]'
 })
 export class RoleDirective implements OnInit {
 
-  @Input() appRole: UserRole[];
+  @Input() appRole: Role[];
 
   constructor(
     private elementRef: ElementRef,
