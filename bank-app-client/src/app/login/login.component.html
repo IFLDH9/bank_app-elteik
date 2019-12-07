@@ -12,11 +12,11 @@
         matInput
         placeholder="Username"
         required
-        [(ngModel)]="user.username"
-        name="username"
-        #username="ngModel"
+        [(ngModel)]="user.name"
+        name="name"
+        #name="ngModel"
     />
-    <mat-error *ngIf="username.invalid">Username is required</mat-error>
+    <mat-error *ngIf="name.invalid">Username is required</mat-error>
   </mat-form-field>
 
 
@@ -27,11 +27,11 @@
       required
       type="password"
       [(ngModel)]="user.password"
-	  class="form-control" 
+	  class="form-control"
 	  name="password"
       #password="ngModel"
     />
-	
+
     <mat-error *ngIf="password.invalid">Password is required</mat-error>
   </mat-form-field>
 

@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-	private user: PersonalData;
+
 	get isLoggedIn(): boolean {
     return this.user.role !== Role.Guest;
 	}
@@ -18,9 +18,10 @@ export class AuthService {
 	get role(): Role {
 		return this.user.role;
 	}
+  private user: PersonalData;
 
 
-	constructor(
+  constructor(
 		private router: Router,
 		private http: HttpClient
 	) {
@@ -33,8 +34,10 @@ export class AuthService {
 	}
 
 	async login(username: string, password: string) {
+
 		const oldUser = this.user;
 		this.user = {
+		  id: null,
 			role: Role.Guest,
 			name: username,
 			password: password,
@@ -43,21 +46,26 @@ export class AuthService {
 			accounts: null
 		};
 		try {
+      console.log(this.user.name);
+      console.log(this.token);
 			const user = await (this.http.get('users/login').toPromise() as Promise<PersonalData>);
+      console.log('thojjoeooeo');
 			this.user.name = user.name;
 			this.user.role = user.role;
 			this.user.dateOfBirth = user.dateOfBirth;
 			this.user.idCardNumber = user.idCardNumber;
 			this.user.accounts = user.accounts;
 			this.router.navigate(['/']);
-			
-		} catch (e) {
+      console.log(user.idCardNumber);
+    } catch (e) {
+		  console.log('xdddddddddddddddddddd');
 			this.user = oldUser;
 		}
 	}
 
 	logout(shouldNavigateToRoot: boolean = true) {
 		this.user = {
+		  id: null,
 		name: 'Guest',
 		password: null,
 		dateOfBirth: null,
