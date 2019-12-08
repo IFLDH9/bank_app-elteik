@@ -47,6 +47,7 @@ export class AuthService {
 		};
 		try {
       console.log(this.user.name);
+      console.log(this.user.password);
       console.log(this.token);
 			const user = await (this.http.get('users/login').toPromise() as Promise<PersonalData>);
       console.log('thojjoeooeo');
@@ -58,7 +59,7 @@ export class AuthService {
 			this.router.navigate(['/']);
       console.log(user.idCardNumber);
     } catch (e) {
-		  console.log('xdddddddddddddddddddd');
+		  console.log(e);
 			this.user = oldUser;
 		}
 	}
