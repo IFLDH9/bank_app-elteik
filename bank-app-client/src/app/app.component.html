@@ -6,9 +6,9 @@
        <mat-icon>home</mat-icon>
         DABANK
     </button>
-    <!-- <ng-container -->
-        <!-- *ngIf="authService.isLoggedIn" -->
-    <!-- > -->
+     <ng-container
+         *ngIf="authService.isLoggedIn"
+     >
         <!-- <button -->
             <!-- mat-button -->
             <!-- routerLink="/issues" -->
@@ -22,8 +22,8 @@
         <!-- > -->
             <!-- New issues -->
         <!-- </button> -->
-        <!-- <button mat-button (click)="authService.logout()">Logout</button> -->
-    <!-- </ng-container> -->
+        <button mat-button (click)="authService.logout()">Logout</button>
+     </ng-container>
     <ng-container
         *ngIf="!authService.isLoggedIn"
     >
