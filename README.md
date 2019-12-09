@@ -71,3 +71,7 @@ Banki alkalmazást szimuláló program.
 * `POST/transactions/create` Utalás oldal
 * `GET/cards/getAll` Kártyák listázása
 * `POST/cards/create` Kártya létrehozása
+
+# HASZNÁLATI ESET DIAGRAM
+![use case](images/usecase.png)
+
