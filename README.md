@@ -2,7 +2,7 @@
 
 Banki alkalmazást szimuláló program.
 
-# Funkcionális követelmények:
+# FUNKCIONÁLIS KÖVETELMÉNYEK:
 
 ## Admin:
 
@@ -47,9 +47,27 @@ Banki alkalmazást szimuláló program.
 * regisztráció kezdeményezése
 * bejelentkezés
 
-# Nem funkcionális követelmények
+## Nem funkcionális követelmények
 * biztonságos, jelszavas azonosítás
 * gyors, egyszerű
 
 ## Szakterületi fogalomjegyzék
 * tranzakció: Két bankszámla közötti összegátvitel.
+
+# VÉGPONTOK
+* `GET/` Főoldal
+* `GET/login` Bejelentkező oldal
+* `GET/login` Bejelentkezés/Kijelentkezés
+* `POST/register` Regisztrálás
+* `GET/persons/getAll` Felhasználók listázása
+* `POST/persons/create` Felhasználó létrehozása
+* `GET/persons/get/byID/:id` Felhasználó adatlapja
+* `PATCH/persons/:id/addAccounts` Bankszámla létrehozása
+* `GET/accounts/getAll` Bankszámlák listázása
+* `GET/accounts/get/byAccountNumber/:accountNumber` Bankszámlák szűrése számlaszám alapján
+* `GET/accounts/get/byId/:id` Bankszámla adatai
+* `PATCH/accounts/modify/:id` Bankszámla adatainak módosítása
+* `DELETE/accounts/delete/:id` Bankszámla törlése
+* `POST/transactions/create` Utalás oldal
+* `GET/cards/getAll` Kártyák listázása
+* `POST/cards/create` Kártya létrehozása
