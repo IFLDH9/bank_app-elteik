@@ -5,7 +5,7 @@
         matInput
         placeholder="account number"
         [(ngModel)]="account.accountNumber"
-        name="account number"
+        name="accountNumber"
         required
         #accountNumber="ngModel"
         [disabled]="mode === 'edit'"
@@ -17,7 +17,7 @@
           accountNumber.errors['required']
         "
       >
-        
+
 	  </mat-error>
     </mat-form-field>
   </div>
@@ -27,11 +27,11 @@
         matInput
         placeholder="balance"
         value=""
-        [(ngModel)]="issue.balance"
+        [(ngModel)]="account.balance"
         name="balance"
         required
         #balance="ngModel"
-        pattern="PC-\d+"
+        pattern="[0-9]+"
       />
       <mat-error
         *ngIf="
@@ -40,7 +40,6 @@
           balance.errors['required']
         "
       >
-        
       </mat-error>
       <mat-error
         *ngIf="
@@ -49,7 +48,7 @@
           balance.errors['pattern']
         "
       >
-        
+
       </mat-error>
     </mat-form-field>
   </div>

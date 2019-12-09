@@ -24,6 +24,10 @@ import { AccountNewComponent } from './account-new/account-new.component';
 //import { IssueEditComponent } from './issue-edit/issue-edit.component';
 import { LoginComponent } from './login/login.component';
 import { RoleDirective } from './role-directive';
+import { AccountModifyComponent } from './account-modify/account-modify.component';
+import { AccountListComponent } from './account-list/account-list.component';
+import { AccountNumberFilterComponent } from './account-number-filter/account-number-filter.component';
+import { AccountDetailComponent } from './account-detail/account-detail.component';
 //import { AccountNewComponent } from './account-new/account-new.component';
 //import { AccountFormComponent } from './account-form/account-form.component';
 
@@ -39,12 +43,16 @@ import { RoleDirective } from './role-directive';
     RoleDirective,
     AccountNewComponent,
     AccountFormComponent,
+    AccountModifyComponent,
+    AccountListComponent,
+    AccountNumberFilterComponent,
+    AccountDetailComponent,
   ],
   imports: [
     MatToolbarModule,
 	MatIconModule,
 	MatButtonModule,
-	
+
 	BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,

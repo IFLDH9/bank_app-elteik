@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.ColumnResult;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 @CrossOrigin
@@ -123,11 +124,24 @@ public class BankController {
             @PathVariable Integer id
     ) {
         try {
-            accountRepository.deleteById(id);
-            return ResponseEntity.ok().build();
+            Optional<Account> oAccount = accountRepository.findById(id);
+            if (oAccount.isPresent()) {
+                Account account = oAccount.get();
+               Iterable<Transaction> transactions= transactionRepository.getTransactionsBySourceAccountNumber(account.getAccountNumber());
+               for(Transaction trans : transactions){
+                   transactionRepository.delete(trans);
+               }
+               transactions= transactionRepository.getTransactionsByTargetAccountNumber(account.getAccountNumber());
+                for(Transaction trans : transactions){
+                    transactionRepository.delete(trans);
+                }
+                accountRepository.deleteById(id);
+                return ResponseEntity.ok().build();
+            }
         } catch (Exception e) {
             return ResponseEntity.notFound().build();
         }
+        return ResponseEntity.notFound().build();
     }
 
     @Secured({"ROLE_USER", "ROLE_ADMIN"})

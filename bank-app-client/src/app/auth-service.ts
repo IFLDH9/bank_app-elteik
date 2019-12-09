@@ -51,11 +51,12 @@ export class AuthService {
       console.log(this.token);
 			const user = await (this.http.get('users/login').toPromise() as Promise<PersonalData>);
       console.log('thojjoeooeo');
-			this.user.name = user.name;
 			this.user.role = user.role;
 			this.user.dateOfBirth = user.dateOfBirth;
 			this.user.idCardNumber = user.idCardNumber;
 			this.user.accounts = user.accounts;
+			console.log(this.user.name);
+			console.log(this.token);
 			this.router.navigate(['/']);
       console.log(user.idCardNumber);
     } catch (e) {

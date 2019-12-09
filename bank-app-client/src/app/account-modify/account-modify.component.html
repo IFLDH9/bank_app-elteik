@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+  <h1>Edit Account</h1>
+  <app-account-form
+    *ngIf="account"
+    [account]="account"
+    [mode]="'edit'"
+    (accountSubmit)="submitIssue($event)"
+  ></app-account-form>
+</div>

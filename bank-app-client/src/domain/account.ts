@@ -5,12 +5,12 @@ import {PersonalData} from './personal-data';
 export interface Account {
 	id: number;
 	createdAt: string;
-	accountNumber: number;
+	accountNumber: string;
 	balance: number;
 	cards: Card[];
 	owners: PersonalData[];
 	incomingTransactions: Transaction[];
 	outgoingTransactions: Transaction[];
-	
-	
+
+
 }

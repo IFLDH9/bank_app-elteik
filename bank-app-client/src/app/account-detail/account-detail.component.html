@@ -1,0 +1,41 @@
+<div>
+  <div>
+    <span>id:</span>
+    <span>{{ account?.id }}</span>
+  </div>
+  <div>
+    <span>Balance:</span>
+    <span>{{ account?.balance}}</span>
+  </div>
+  <div>
+    <span>Account Number:</span>
+    <span>{{ account?.accountNumber }}</span>
+  </div>
+  <div>
+    <span>Created At:</span>
+    <span>{{ account?.createdAt | date:'yyyy.MM.dd.' }}</span>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editAccount()"
+      *appRole="[Role.Admin]"
+    >Edit</button>
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="deleteAccount()"
+      *appRole="[Role.Admin]"
+    >Delete</button>
+  </div>
+  <div>
+    <ul>
+      <li *ngFor="let owner of account?.owners">
+        {{ owner.name }}
+      </li>
+    </ul>
+  </div>
+</div>

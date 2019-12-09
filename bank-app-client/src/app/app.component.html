@@ -9,19 +9,20 @@
      <ng-container
          *ngIf="authService.isLoggedIn"
      >
-        <!-- <button -->
-            <!-- mat-button -->
-            <!-- routerLink="/issues" -->
-        <!-- > -->
-            <!-- My issues -->
-        <!-- </button> -->
-        <!-- <button -->
-            <!-- mat-button -->
-            <!-- routerLink="/issues/new" -->
-            <!-- *appRole="[Role.User]" -->
-        <!-- > -->
-            <!-- New issues -->
-        <!-- </button> -->
+         <button
+             mat-button
+             routerLink="/accounts"
+             *appRole="[Role.Admin]"
+        >
+            List accounts
+         </button>
+         <button
+             mat-button
+             routerLink="bank/account/create"
+             *appRole="[Role.Admin]"
+         >
+             Create bank account
+         </button>
         <button mat-button (click)="authService.logout()">Logout</button>
      </ng-container>
     <ng-container

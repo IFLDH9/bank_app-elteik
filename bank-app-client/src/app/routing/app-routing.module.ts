@@ -10,6 +10,9 @@ import { AccountNewComponent } from '../account-new/account-new.component';
 import { LoginComponent } from '../login/login.component';
 import { Role } from 'src/domain/role';
 import { RoleGuard } from '../role-guard';
+import {AccountModifyComponent} from "../account-modify/account-modify.component";
+import {AccountListComponent} from "../account-list/account-list.component";
+import {AccountDetailComponent} from "../account-detail/account-detail.component";
 
 
 const routes: Routes = [
@@ -18,38 +21,38 @@ const routes: Routes = [
     component: LandingComponent,
     pathMatch: 'full'
   },
-  // {
-    // path: 'issues',
-    // component: IssueListComponent,
-    // data: {
-      // roles: [UserRole.Admin, UserRole.User],
-    // },
-    // canActivate: [RoleGuard],
-  // },
+   {
+     path: 'accounts',
+     component: AccountListComponent,
+     data: {
+       roles: [Role.Admin],
+     },
+     canActivate: [RoleGuard],
+   },
   {
     path: 'bank/account/create',
     component: AccountNewComponent,
     data: {
-      roles: [Role.User, Role.Admin],
+      roles: [Role.Admin],
     },
     canActivate: [RoleGuard],
   },
-  // {
-    // path: 'issues/:id',
-    // component: IssueDetailComponent,
-    // data: {
-      // roles: [UserRole.Admin, UserRole.User],
-    // },
-    // canActivate: [RoleGuard],
-  // },
-  // {
-    // path: 'issues/:id/edit',
-    // component: IssueEditComponent,
-    // data: {
-      // roles: [UserRole.Admin],
-    // },
-    // canActivate: [RoleGuard],
-  // },
+   {
+     path: 'bank/account/:id',
+     component: AccountDetailComponent,
+     data: {
+       roles: [Role.Admin],
+     },
+     canActivate: [RoleGuard],
+   },
+   {
+     path: 'bank/account/modify/:id',
+     component: AccountModifyComponent,
+     data: {
+       roles: [Role.Admin],
+     },
+     canActivate: [RoleGuard],
+   },
   {
     path: 'login',
     component: LoginComponent,

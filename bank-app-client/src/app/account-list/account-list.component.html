@@ -1,0 +1,38 @@
+<div>
+  <h1>Account list</h1>
+  <div>
+    <app-account-number-filter></app-account-number-filter>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Balance</th>
+      <th>Account Number</th>
+      <th>Creation Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container
+      *ngIf="bankAccountService.filteredAccounts.length > 0"
+    >
+      <tr
+        *ngFor="let account of bankAccountService.filteredAccounts"
+        [routerLink]="['/','bank','account',account.id]"
+      >
+        <td>{{ account.id }}</td>
+        <td>{{ account.balance }}</td>
+        <td>{{ account.accountNumber }}</td>
+        <td>{{ account.createdAt | date:'yyyy.MM.dd.' }}</td>
+      </tr>
+    </ng-container>
+    <tr
+      *ngIf="bankAccountService.filteredAccounts.length === 0"
+    >
+      <td
+        colspan="3"
+      >No accounts</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -11,26 +11,28 @@ import { Router } from '@angular/router';
 export class AccountNewComponent implements OnInit {
 
 	account : Account;
-  
+
 	constructor(private bankAccountService : BankAccountService,
 				private router : Router) { }
-	
+
 	ngOnInit() {
 		this.account = {
 				id : null,
 				createdAt : '',
 				accountNumber : null,
-				balance : null,
+				balance : 0,
 				cards : null,
 				owners : null,
 				incomingTransactions : null,
 				outgoingTransactions : null,
 		};
   }
-  
+
   async submitAccount(account : Account){
+	  console.log(account.accountNumber);
+	  console.log(account.balance);
 	await this.bankAccountService.createAccount(account);
-	this.router.navigate(['/', 'accounts']);
+	this.router.navigate(['/']);
   }
 
 }
