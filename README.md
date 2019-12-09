@@ -73,5 +73,10 @@ Banki alkalmazást szimuláló program.
 * `POST/cards/create` Kártya létrehozása
 
 # HASZNÁLATI ESET DIAGRAM
-![use case](images/usecase.png)
+![use case](https://github.com/IFLDH9/bank_app-elteik/blob/master/images/usecase.PNG)
 
+# ADATBÁZIS DIAGRAM
+![database](https://github.com/IFLDH9/bank_app-elteik/blob/master/images/database.PNG)
+
+# PÉLDA FOLYAMAT MENETE
+![process](https://github.com/IFLDH9/bank_app-elteik/blob/master/images/folyamat.PNG)
