@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+  <h1>Edit Card</h1>
+  <app-card-form
+    *ngIf="card"
+    [card]="card"
+    [mode]="'edit'"
+    (cardSubmit)="submitIssue($event)"
+  ></app-card-form>
+</div>

@@ -28,6 +28,13 @@ import { AccountModifyComponent } from './account-modify/account-modify.componen
 import { AccountListComponent } from './account-list/account-list.component';
 import { AccountNumberFilterComponent } from './account-number-filter/account-number-filter.component';
 import { AccountDetailComponent } from './account-detail/account-detail.component';
+import { CardDetailComponent } from './card-detail/card-detail.component';
+import { CardFormComponent } from './card-form/card-form.component';
+import { CardListComponent } from './card-list/card-list.component';
+import { CardModifyComponent } from './card-modify/card-modify.component';
+import { CardNewComponent } from './card-new/card-new.component';
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import { ConnectionsComponent } from './connections/connections.component';
 //import { AccountNewComponent } from './account-new/account-new.component';
 //import { AccountFormComponent } from './account-form/account-form.component';
 
@@ -47,13 +54,19 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
     AccountListComponent,
     AccountNumberFilterComponent,
     AccountDetailComponent,
+    CardDetailComponent,
+    CardFormComponent,
+    CardListComponent,
+    CardModifyComponent,
+    CardNewComponent,
+    ConnectionsComponent,
   ],
   imports: [
     MatToolbarModule,
-	MatIconModule,
-	MatButtonModule,
+    MatIconModule,
+    MatButtonModule,
 
-	BrowserModule,
+    BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MatToolbarModule,
@@ -64,6 +77,7 @@ import { AccountDetailComponent } from './account-detail/account-detail.componen
     MatButtonToggleModule,
     MatSelectModule,
     FormsModule,
+    MatDatepickerModule,
   ],
   providers: [
     {

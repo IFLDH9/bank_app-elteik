@@ -343,7 +343,7 @@ public class BankController {
     @PatchMapping("/cards/{id}/addAccount")
     public ResponseEntity<Card> addAccountToCard(
             @PathVariable Integer id,
-            @PathVariable Integer accountId
+            @RequestParam Integer accountId
     ) {
         Account account = null;
         Optional<Account> oAccount = accountRepository.findById(accountId);

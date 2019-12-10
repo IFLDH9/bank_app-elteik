@@ -1,0 +1,41 @@
+<h3>Connect Bank Card to Bank Account</h3>
+<form #form="ngForm" (ngSubmit)="submitConnection(cardId.value,accountId.value)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Card ID"
+        [(ngModel)]="cardID"
+        name="cardID"
+        required
+        #cardId="ngModel"
+        pattern="[0-9]+"
+      />
+      <mat-error
+        *ngIf="
+          cardId.invalid &&
+          (cardId.touched || cardId.dirty) &&
+          cardId.errors['required']
+        "
+      >
+        Card ID is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Account ID"
+        [(ngModel)]="accountID"
+        name="accountId"
+        required
+        #accountId="ngModel"
+        pattern="[0-9]+"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

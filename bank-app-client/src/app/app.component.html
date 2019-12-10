@@ -4,7 +4,7 @@
         routerLink="/"
     >
        <mat-icon>home</mat-icon>
-        DABANK
+        DABANK - {{authService.role.toString().substr(5,10)}}
     </button>
      <ng-container
          *ngIf="authService.isLoggedIn"
@@ -23,12 +23,40 @@
          >
              Create bank account
          </button>
-        <button mat-button (click)="authService.logout()">Logout</button>
+
+        <button id="LogoutButton" mat-button (click)="authService.logout()">Logout</button>
      </ng-container>
+
     <ng-container
         *ngIf="!authService.isLoggedIn"
     >
-        <button mat-button routerLink="/login">Login</button>
+        <button id="LoginButton" mat-button routerLink="/login">Login</button>
     </ng-container>
+
+  <ng-container
+    *ngIf="authService.isLoggedIn"
+  >
+    <button
+      mat-button
+      routerLink="/cards"
+      *appRole="[Role.Admin]"
+    >
+      List Cards
+    </button>
+    <button
+      mat-button
+      routerLink="bank/cards/create"
+      *appRole="[Role.Admin]"
+    >
+      Create bank card
+    </button>
+    <button
+      mat-button
+      routerLink="bank/cards/connect"
+      *appRole="[Role.Admin]"
+    >
+      Connections
+    </button>
+  </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>

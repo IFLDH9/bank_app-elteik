@@ -1,0 +1,97 @@
+<form #form="ngForm" (ngSubmit)="submitCard(form.form)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Card Number"
+        [(ngModel)]="card.cardNumber"
+        name="cardNumber"
+        required
+        #cardNumber="ngModel"
+        [disabled]="mode === 'edit'"
+        pattern="[0-9]+"
+      />
+      <mat-error
+        *ngIf="
+          cardNumber.invalid &&
+          (cardNumber.touched || cardNumber.dirty) &&
+          cardNumber.errors['required']
+        "
+      >
+        Card Number is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Owner Name"
+        value=""
+        [(ngModel)]="card.ownerName"
+        name="ownerName"
+        required
+        #ownerName="ngModel"
+      />
+      <mat-error
+        *ngIf="
+          ownerName.invalid &&
+          (ownerName.touched || ownerName.dirty) &&
+          ownerName.errors['required']
+        "
+      >
+        Owner name is required!
+      </mat-error>
+      <mat-error
+        *ngIf="
+          ownerName.invalid &&
+          (ownerName.touched || ownerName.dirty) &&
+          ownerName.errors['pattern']
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select
+        [(ngModel)]="card.cardType"
+        name="cardType"
+        required
+        #type="ngModel"
+      >
+        <mat-option *ngFor="let type of types" [value]="type.value">
+          {{ type.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Expiration day"
+        [(ngModel)]="card.expirationDate"
+        name="expirationDate"
+        required
+        #expirationDay="ngModel"
+        [disabled]="mode === 'edit'"
+      />
+      <mat-error
+        *ngIf="
+          expirationDay.invalid &&
+          (expirationDay.touched || expirationDay.dirty) &&
+          expirationDay.errors['required']
+        "
+      >
+        Expiration day is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

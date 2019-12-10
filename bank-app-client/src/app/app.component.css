@@ -1,0 +1,11 @@
+#LogoutButton {
+  position: absolute;
+  right: 0;
+  word-spacing: 10px;
+}
+
+#LoginButton {
+  position: absolute;
+  right: 0;
+  word-spacing: 10px;
+}

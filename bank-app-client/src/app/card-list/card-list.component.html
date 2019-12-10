@@ -1,0 +1,40 @@
+<div>
+  <h1>Card list</h1>
+  <div>
+
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Owner Name</th>
+      <th>Card Number</th>
+      <th>Card Type</th>
+      <th>Expiration Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container
+      *ngIf="bankCardService.filteredCards.length > 0"
+    >
+      <tr
+        *ngFor="let card of bankCardService.filteredCards"
+        [routerLink]="['/','bank','cards',card.id]"
+      >
+        <td>{{ card.id }}</td>
+        <td>{{ card.ownerName }}</td>
+        <td>{{ card.cardNumber }}</td>
+        <td>{{ card.cardType}}</td>
+        <td>{{ card.expirationDate | date:'yyyy.MM.dd.' }}</td>
+      </tr>
+    </ng-container>
+    <tr
+      *ngIf="bankCardService.filteredCards.length === 0"
+    >
+      <td
+        colspan="3"
+      >No cards</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

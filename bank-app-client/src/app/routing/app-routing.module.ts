@@ -13,6 +13,11 @@ import { RoleGuard } from '../role-guard';
 import {AccountModifyComponent} from "../account-modify/account-modify.component";
 import {AccountListComponent} from "../account-list/account-list.component";
 import {AccountDetailComponent} from "../account-detail/account-detail.component";
+import {CardListComponent} from "../card-list/card-list.component";
+import {CardNewComponent} from "../card-new/card-new.component";
+import {CardDetailComponent} from "../card-detail/card-detail.component";
+import {CardModifyComponent} from "../card-modify/card-modify.component";
+import {ConnectionsComponent} from "../connections/connections.component";
 
 
 const routes: Routes = [
@@ -61,10 +66,55 @@ const routes: Routes = [
     },
     canActivate: [RoleGuard],
   },
+
+  {
+    path: 'cards',
+    component: CardListComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/cards/create',
+    component: CardNewComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/cards/connect',
+    component: ConnectionsComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/cards/:id',
+    component: CardDetailComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/cards/modify/:id',
+    component: CardModifyComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+
   {
     path: '**',
     redirectTo: '/',
   },
+
+
+
 ];
 
 @NgModule({
