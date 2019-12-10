@@ -1,0 +1,9 @@
+<div style="padding-left: 4em;">
+  <h1>Edit Card</h1>
+  <app-personal-form
+    *ngIf="personalData"
+    [personalData]="personalData"
+    [mode]="'edit'"
+    (personalDataSubmit)="submitIssue($event)"
+  ></app-personal-form>
+</div>

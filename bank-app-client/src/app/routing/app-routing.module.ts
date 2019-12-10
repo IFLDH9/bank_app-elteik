@@ -18,6 +18,13 @@ import {CardNewComponent} from "../card-new/card-new.component";
 import {CardDetailComponent} from "../card-detail/card-detail.component";
 import {CardModifyComponent} from "../card-modify/card-modify.component";
 import {ConnectionsComponent} from "../connections/connections.component";
+import {TransactionListComponent} from "../transaction-list/transaction-list.component";
+import {TransactionFormComponent} from "../transaction-form/transaction-form.component";
+import {TransactionNewComponent} from "../transaction-new/transaction-new.component";
+import {PersonalListComponent} from "../personal-list/personal-list.component";
+import {PersonalNewComponent} from "../personal-new/personal-new.component";
+import {PersonalDetailComponent} from "../personal-detail/personal-detail.component";
+import {PersonalModifyComponent} from "../personal-modify/personal-modify.component";
 
 
 const routes: Routes = [
@@ -107,13 +114,61 @@ const routes: Routes = [
     },
     canActivate: [RoleGuard],
   },
+  {
+    path: 'transactions',
+    component: TransactionListComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/transactions/create',
+    component: TransactionNewComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
 
+
+  {
+    path: 'persons',
+    component: PersonalListComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/persons/create',
+    component: PersonalNewComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+
+  {
+    path: 'bank/persons/:id',
+    component: PersonalDetailComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
+  {
+    path: 'bank/persons/modify/:id',
+    component: PersonalModifyComponent,
+    data: {
+      roles: [Role.Admin],
+    },
+    canActivate: [RoleGuard],
+  },
   {
     path: '**',
     redirectTo: '/',
   },
-
-
 
 ];
 

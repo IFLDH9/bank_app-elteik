@@ -1,0 +1,117 @@
+<form #form="ngForm" (ngSubmit)="submitPersonalData(form.form)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Name"
+        [(ngModel)]="personalData.name"
+        name="name"
+        required
+        #name="ngModel"
+        [disabled]="mode === 'edit'"
+      />
+      <mat-error
+        *ngIf="
+          name.invalid &&
+          (name.touched || name.dirty) &&
+          name.errors['required']
+        "
+      >
+        Name is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Password"
+        [(ngModel)]="personalData.password"
+        name="password"
+        required
+        #password="ngModel"
+        [disabled]="mode === 'edit'"
+      />
+      <mat-error
+        *ngIf="
+          password.invalid &&
+          (password.touched || password.dirty) &&
+          password.errors['required']
+        "
+      >
+       Password is required!
+      </mat-error>
+      <mat-error
+        *ngIf="
+          password.invalid &&
+          (password.touched || password.dirty) &&
+          password.errors['pattern']
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Role</mat-label>
+      <mat-select
+        [(ngModel)]="personalData.role"
+        name="role"
+        required
+        #role="ngModel"
+      >
+        <mat-option *ngFor="let role of types" [value]="role.value">
+          {{ role.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="ID Card Number"
+        [(ngModel)]="personalData.idCardNumber"
+        name="idCardNumber"
+        required
+        #idCardNumber="ngModel"
+      />
+      <mat-error
+        *ngIf="
+          idCardNumber.invalid &&
+          (idCardNumber.touched || idCardNumber.dirty) &&
+          idCardNumber.errors['required']
+        "
+      >
+       ID Card Number is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Date of birth"
+        [(ngModel)]="personalData.dateOfBirth"
+        name="dateOfBirth"
+        required
+        #dateOfBirth="ngModel"
+      />
+      <mat-error
+        *ngIf="
+          dateOfBirth.invalid &&
+          (dateOfBirth.touched || dateOfBirth.dirty) &&
+          dateOfBirth.errors['required']
+        "
+      >
+        Date of birth is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

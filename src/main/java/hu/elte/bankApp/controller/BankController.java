@@ -416,14 +416,14 @@ public class BankController {
     @Secured({"ROLE_USER", "ROLE_ADMIN"})
     @PostMapping("/transactions/create")
     public ResponseEntity<Transaction> createTransaction(
-            @RequestBody TransactionWrapper transactionWrapper
+            @RequestBody Transaction transactionWrapper
     ) {
         Optional<Account> oSourceAccount = accountRepository.findAccountByAccountNumber(transactionWrapper.getSourceAccountNumber());
         Optional<Account> oTargetAccount = accountRepository.findAccountByAccountNumber(transactionWrapper.getTargetAccountNumber());
         if (oSourceAccount.isPresent() && oTargetAccount.isPresent()) {
             Account sourceAccount = oSourceAccount.get();
             Account targetAccount = oTargetAccount.get();
-            if (sourceAccount.getBalance() > transactionWrapper.getAmount()) {
+            if (sourceAccount.getBalance() > transactionWrapper.getValue()) {
                 Transaction transaction = new Transaction();
                 transaction.setDateOfTransaction(LocalDate.now());
 
@@ -431,10 +431,10 @@ public class BankController {
                 transaction.setTargetAccountNumber(targetAccount.getAccountNumber());
                 transaction.setSourceAccount(sourceAccount);
                 transaction.setTargetAccount(targetAccount);
-                transaction.setValue(transactionWrapper.getAmount());
+                transaction.setValue(transactionWrapper.getValue());
 
-                sourceAccount.changeBalance(-1 * transactionWrapper.getAmount());
-                targetAccount.changeBalance(transactionWrapper.getAmount());
+                sourceAccount.changeBalance(-1 * transactionWrapper.getValue());
+                targetAccount.changeBalance(transactionWrapper.getValue());
 
                 sourceAccount.addOutgoingTransaction(transaction);
                 sourceAccount.addIncomingTransaction(transaction);

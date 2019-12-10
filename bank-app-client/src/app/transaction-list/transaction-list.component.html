@@ -1,0 +1,42 @@
+<div>
+  <h1>Transaction list</h1>
+  <div>
+<app-transaction-source-account-filter></app-transaction-source-account-filter>
+  </div>
+  <div>
+    <app-transaction-target-account-filter></app-transaction-target-account-filter>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Source Account Number</th>
+      <th>Target Account Number</th>
+      <th>Value</th>
+      <th>Date of Transaction</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container
+      *ngIf="transactionService.filteredTransactions.length > 0"
+    >
+      <tr
+        *ngFor="let transaction of transactionService.filteredTransactions"
+      >
+        <td>{{ transaction.id }}</td>
+        <td>{{ transaction.sourceAccountNumber }}</td>
+        <td>{{ transaction.targetAccountNumber }}</td>
+        <td>{{ transaction.value}}</td>
+        <td>{{ transaction.dateOfTransaction | date:'yyyy.MM.dd.' }}</td>
+      </tr>
+    </ng-container>
+    <tr
+      *ngIf="transactionService.filteredTransactions.length === 0"
+    >
+      <td
+        colspan="3"
+      >No cards</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

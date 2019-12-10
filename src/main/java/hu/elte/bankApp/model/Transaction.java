@@ -37,7 +37,6 @@ public class Transaction {
 
     @Column(nullable = false)
     @CreationTimestamp
-    // @JsonProperty(access = WRITE_ONLY)
     private LocalDate dateOfTransaction;
 
     @JsonIgnore

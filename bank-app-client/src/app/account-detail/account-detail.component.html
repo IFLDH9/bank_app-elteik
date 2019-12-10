@@ -33,8 +33,7 @@
   </div>
   <div>
     <ul>
-      <li *ngFor="let owner of account?.owners">
-        {{ owner.name }}
+      <li *ngFor="let transaction of account?.incomingTransactions">
       </li>
     </ul>
   </div>

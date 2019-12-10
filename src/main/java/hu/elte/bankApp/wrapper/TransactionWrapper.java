@@ -3,7 +3,7 @@ package hu.elte.bankApp.wrapper;
 public class TransactionWrapper {
     private String sourceAccountNumber;
     private String targetAccountNumber;
-    private int amount;
+    private int value;
 
     public String getSourceAccountNumber() {
         return sourceAccountNumber;
@@ -22,10 +22,10 @@ public class TransactionWrapper {
     }
 
     public int getAmount() {
-        return amount;
+        return value;
     }
 
     public void setAmount(int amount) {
-        this.amount = amount;
+        this.value = amount;
     }
 }

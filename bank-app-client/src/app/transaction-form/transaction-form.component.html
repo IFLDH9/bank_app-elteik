@@ -1,0 +1,81 @@
+<form #form="ngForm" (ngSubmit)="submitTransaction(form.form)">
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Source Account Number"
+        [(ngModel)]="transaction.sourceAccountNumber"
+        name="sourceAccountNumber"
+        required
+        #sourceAccountNumber="ngModel"
+
+      />
+      <mat-error
+        *ngIf="
+          sourceAccountNumber.invalid &&
+          (sourceAccountNumber.touched || sourceAccountNumber.dirty) &&
+          sourceAccountNumber.errors['required']
+        "
+      >
+        Source Account Number is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Target Account Name"
+        value=""
+        [(ngModel)]="transaction.targetAccountNumber"
+        name="targetAccountNumber"
+        required
+        #targetAccountNumber="ngModel"
+
+      />
+      <mat-error
+        *ngIf="
+          targetAccountNumber.invalid &&
+          (targetAccountNumber.touched || targetAccountNumber.dirty) &&
+          targetAccountNumber.errors['required']
+        "
+      >
+        Target account number is required!
+      </mat-error>
+      <mat-error
+        *ngIf="
+          targetAccountNumber.invalid &&
+          (targetAccountNumber.touched || targetAccountNumber.dirty) &&
+          targetAccountNumber.errors['pattern']
+        "
+      >
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Value"
+        [(ngModel)]="transaction.value"
+        name="value"
+        required
+        #value="ngModel"
+        pattern="[0-9]+"
+      />
+      <mat-error
+        *ngIf="
+          value.invalid &&
+          (value.touched || value.dirty) &&
+          value.errors['required']
+        "
+      >
+        Value is required!
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <button mat-raised-button color="primary">Submit</button>
+  </div>
+</form>

@@ -1,0 +1,38 @@
+<div>
+  <h1>Person List</h1>
+  <div>
+    <app-id-card-number-filter></app-id-card-number-filter>
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th>Id</th>
+      <th>Id Card Number</th>
+      <th>Date of birth</th>
+      <th>Role</th>
+    </tr>
+    </thead>
+    <tbody>
+    <ng-container
+      *ngIf="personalService.filteredPersons.length > 0"
+    >
+      <tr
+        *ngFor="let person of personalService.filteredPersons"
+        [routerLink]="['/','bank','persons',person.id]"
+      >
+        <td>{{ person.id }}</td>
+        <td>{{ person.idCardNumber }}</td>
+        <td>{{ person.dateOfBirth }}</td>
+        <td>{{ person.role}}</td>
+      </tr>
+    </ng-container>
+    <tr
+      *ngIf="personalService.filteredPersons.length === 0"
+    >
+      <td
+        colspan="3"
+      >No persons</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

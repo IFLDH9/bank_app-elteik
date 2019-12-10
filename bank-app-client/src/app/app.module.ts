@@ -35,6 +35,19 @@ import { CardModifyComponent } from './card-modify/card-modify.component';
 import { CardNewComponent } from './card-new/card-new.component';
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import { ConnectionsComponent } from './connections/connections.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { CardNumberFilterComponent } from './card-number-filter/card-number-filter.component';
+import { TransactionFormComponent } from './transaction-form/transaction-form.component';
+import { TransactionListComponent } from './transaction-list/transaction-list.component';
+import { TransactionNewComponent } from './transaction-new/transaction-new.component';
+import { PersonalDetailComponent } from './personal-detail/personal-detail.component';
+import { PersonalFormComponent } from './personal-form/personal-form.component';
+import { PersonalListComponent } from './personal-list/personal-list.component';
+import { PersonalModifyComponent } from './personal-modify/personal-modify.component';
+import { PersonalNewComponent } from './personal-new/personal-new.component';
+import { TransactionSourceAccountFilterComponent } from './transaction-source-account-filter/transaction-source-account-filter.component';
+import { TransactionTargetAccountFilterComponent } from './transaction-target-account-filter/transaction-target-account-filter.component';
+import { IdCardNumberFilterComponent } from './id-card-number-filter/id-card-number-filter.component';
 //import { AccountNewComponent } from './account-new/account-new.component';
 //import { AccountFormComponent } from './account-form/account-form.component';
 
@@ -60,6 +73,18 @@ import { ConnectionsComponent } from './connections/connections.component';
     CardModifyComponent,
     CardNewComponent,
     ConnectionsComponent,
+    CardNumberFilterComponent,
+    TransactionFormComponent,
+    TransactionListComponent,
+    TransactionNewComponent,
+    PersonalDetailComponent,
+    PersonalFormComponent,
+    PersonalListComponent,
+    PersonalModifyComponent,
+    PersonalNewComponent,
+    TransactionSourceAccountFilterComponent,
+    TransactionTargetAccountFilterComponent,
+    IdCardNumberFilterComponent,
   ],
   imports: [
     MatToolbarModule,
@@ -78,6 +103,7 @@ import { ConnectionsComponent } from './connections/connections.component';
     MatSelectModule,
     FormsModule,
     MatDatepickerModule,
+    MatMenuModule,
   ],
   providers: [
     {

@@ -1,0 +1,8 @@
+<div style="padding-left: 4em;">
+  <h1>New Account</h1>
+  <app-transaction-form
+    [transaction]="transaction"
+    [mode]="'create'"
+    (transactionSubmit)="submitTransaction($event)"
+  ></app-transaction-form>
+</div>

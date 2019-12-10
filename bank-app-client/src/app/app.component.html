@@ -7,24 +7,88 @@
         DABANK - {{authService.role.toString().substr(5,10)}}
     </button>
      <ng-container
-         *ngIf="authService.isLoggedIn"
+         *ngIf="authService.isLoggedIn && authService.role===Role.Admin"
      >
+
+       <button mat-button [matMenuTriggerFor]="menu">List</button>
+       <mat-menu #menu="matMenu" yPosition="below" xPosition="after">
          <button
-             mat-button
-             routerLink="/accounts"
-             *appRole="[Role.Admin]"
-        >
-            List accounts
-         </button>
-         <button
-             mat-button
-             routerLink="bank/account/create"
-             *appRole="[Role.Admin]"
+           mat-button
+           routerLink="/accounts"
+           *appRole="[Role.Admin]"
          >
-             Create bank account
+           List accounts
+         </button>
+         <br>
+         <button
+           mat-button
+           routerLink="/cards"
+           *appRole="[Role.Admin]"
+         >
+           List Cards
+         </button>
+         <br>
+         <button
+           mat-button
+           routerLink="/transactions"
+           *appRole="[Role.Admin]"
+         >
+           List Transactions
+         </button>
+         <br>
+         <button
+           mat-button
+           routerLink="/persons"
+           *appRole="[Role.Admin]"
+         >
+           List Persons
          </button>
 
-        <button id="LogoutButton" mat-button (click)="authService.logout()">Logout</button>
+       </mat-menu>
+
+       <button mat-button [matMenuTriggerFor]="createMenu">Create</button>
+       <mat-menu #createMenu="matMenu" yPosition="below" xPosition="after">
+         <button
+           mat-button
+           routerLink="bank/account/create"
+           *appRole="[Role.Admin]"
+         >
+           Create bank account
+         </button>
+         <br>
+         <button
+           mat-button
+           routerLink="bank/cards/create"
+           *appRole="[Role.Admin]"
+         >
+           Create bank card
+         </button>
+          <br>
+         <button
+           mat-button
+           routerLink="bank/transactions/create"
+           *appRole="[Role.Admin]"
+         >
+           Create Transaction
+         </button>
+
+          <br>
+         <button
+           mat-button
+           routerLink="bank/persons/create"
+           *appRole="[Role.Admin]"
+         >
+           Create Personal Data
+         </button>
+       </mat-menu>
+
+       <button
+         mat-button
+         routerLink="bank/cards/connect"
+         *appRole="[Role.Admin]"
+       >
+         Connections
+       </button>
      </ng-container>
 
     <ng-container
@@ -36,27 +100,7 @@
   <ng-container
     *ngIf="authService.isLoggedIn"
   >
-    <button
-      mat-button
-      routerLink="/cards"
-      *appRole="[Role.Admin]"
-    >
-      List Cards
-    </button>
-    <button
-      mat-button
-      routerLink="bank/cards/create"
-      *appRole="[Role.Admin]"
-    >
-      Create bank card
-    </button>
-    <button
-      mat-button
-      routerLink="bank/cards/connect"
-      *appRole="[Role.Admin]"
-    >
-      Connections
-    </button>
+    <button id="LogoutButton" mat-button (click)="authService.logout()">Logout</button>
   </ng-container>
 </mat-toolbar>
 <router-outlet></router-outlet>
